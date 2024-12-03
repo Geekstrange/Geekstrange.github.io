@@ -1,1 +1,134 @@
-<h1>欢迎</h1>
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+              /* 漸變旋轉角度屬性 */
+      @property --gradient-angle {
+        inherits: false;
+        initial-value: 0deg;
+        syntax: "<angle>";
+      }
+
+      /* 旋轉動畫 */
+      @keyframes spin {
+        to {
+          --gradient-angle: 360deg;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --black: oklch(17.7% 0.105 262.48);
+        --purple: oklch(60% 0.37 294.7);
+        --orange: oklch(60% 0.37 64.65);
+        --yellow: oklch(60% 0.37 109.08);
+        --blue: oklch(60% 0.37 237.06);
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: black;
+      }
+
+      div {
+        position: relative;
+        width: 300px;
+        aspect-ratio: 3/2;
+        background: conic-gradient(
+            in oklch from var(--gradient-angle),
+            var(--purple),
+            var(--orange),
+            var(--yellow),
+            var(--blue),
+            var(--purple)
+          )
+          border-box;
+        border: 5px solid transparent;
+        border-radius: 20px;
+        animation: spin 2s linear infinite;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* 設置黑色遮罩 */
+      div::before {
+        position: absolute;
+        content: "";
+        background: black;
+        border-radius: 15px;
+        inset: 0;
+        z-index: 5;
+      }
+
+      /* 設置模糊背景 */
+      div::after {
+        position: absolute;
+        content: "";
+        background: conic-gradient(
+          in oklch from var(--gradient-angle),
+          var(--purple),
+          var(--orange),
+          var(--yellow),
+          var(--blue),
+          var(--purple)
+        );
+        border-radius: 15px;
+        inset: 0;
+        filter: blur(50px);
+        animation: spin 2s linear infinite;
+        z-index: 1;
+      }
+
+      h2 {
+        font-size: 23px;
+        color: #222;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        cursor: pointer;
+        position: relative;
+        z-index: 6; /* 確保h2在遮罩之上 */
+      }
+
+      h2 span {
+        transition: 0.8s; /* 移動速度 */
+      }
+
+      h2:hover span:nth-child(1) {
+        margin-right: 10px;
+      }
+
+      h2:hover span:nth-child(1)::after {
+        content: "'M";
+      }
+	  
+      /* 默認隱藏項目 */
+      h2:hover span:nth-child(2) {
+        margin-left: 25px; /* 移動距離 */
+      }
+
+      h2:hover span {
+        color: #fff;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff, 0 0 80px #fff,
+          0 0 120px #fff, 0 0 160px #fff;
+      }
+    </style>
+</head>
+<body>
+    <div>
+        <h2><span>i</span>ii<span>coming</span></h2>
+    </div>
+</body>
+</html>
