@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="https://i.ibb.co/GF7gPCW/ge-be.png">
   <title>Geekstrange's World.</title>
   <style>
-    @font-face {
-      font-family: "Futura", "Lachang", "OptimaRoma", "Pacifico";
-      src: url("/fonts/Futura.ttf"),
-           url("/fonts/Lachang.ttf"),
-           url("/fonts/OptimaRoma.otf"),
-           url("/fonts/Pacifico.ttf"); /*Typeface*/
-    }
-/*------------------------------------------Header------------------------------------------------------------------*/
+    /*------------------------------------------Typeface------------------------------------------------------------------*/
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico:wght@100&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Sumana=swap');
+    /*------------------------------------------Header------------------------------------------------------------------*/
     * {
       margin: 0;
       padding: 0;
@@ -24,11 +22,12 @@
     }
 
     .copy {
-      font-family: "OptimaRoma";
+      font-family: "Sumana";
+      text-align: center;
     }
 
     .cardtext {
-      font-family: "拉长加粗";
+      font-family: "Sumana";
     }
 
     body {
@@ -53,7 +52,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Futura";
+      font-family: "Outfit";
     }
 
     .navigation li {
@@ -101,7 +100,8 @@
           rgba(206, 245, 223, 0.4) 34%,
           rgba(206, 245, 223, 1) 68%);
     }
-/*--------------------------------------------Switch----------------------------------------------------------------*/
+
+    /*--------------------------------------------Switch----------------------------------------------------------------*/
     @import "compass/css3";
 
     *,
@@ -217,9 +217,10 @@
         0 -1px 0 rgba(0, 0, 0, 0.5),
         -110px 32px 15px 13px rgba(0, 0, 0, 0.25);
     }
-/*--------------------------------------blog & card----------------------------------------------------------------------*/
+
+    /*--------------------------------------blog & card----------------------------------------------------------------------*/
     .h2two {
-      font-family: "Futura";
+      font-family: "Outfit";
     }
 
     .blog h2 {
@@ -231,7 +232,7 @@
     }
 
     .blog h3 {
-      font-family: "Futura";
+      font-family: "Outfit";
     }
 
     .blog p {
@@ -379,7 +380,8 @@
         text-align: unset;
       }
     }
-/*-----------------------------------------------h1 Welcome input--------------------------------------------------------*/
+
+    /*-----------------------------------------------h1 Welcome input--------------------------------------------------------*/
     :root {
       font-size: 20px;
     }
@@ -450,15 +452,15 @@
       <li><a href="#">Contact</a></li>
     </ul>
   </header>
-<!---------------------------------------------------------------------------------------------------------------->
+  <!---------------------------------------------------------------------------------------------------------------->
   <section class="parallax">
     <h1 id="title">Welcome</h1>
   </section>
-<!---------------------------------------------------------------------------------------------------------------->
+  <!---------------------------------------------------------------------------------------------------------------->
   <input type="checkbox" id="switch" name="switch">
   <label for="switch" class="switch"></label>
-<!---------------------------------------------------------------------------------------------------------------->
-  <section class="blog">
+  <!---------------------------------------------------------------------------------------------------------------->
+  <section class="blog" style="display: none;">
     <h2>My Project</h2>
     <p class="h2two">Welcome to my world.</p>
     <p class="cardtext">
@@ -508,8 +510,8 @@
         </div>
       </div>
     </div>
-    <p class="copy">Copyright © 2004 Geekstrange. All rights reserved.</p>
   </section>
+  <p class="copy">Copyright © 2004 Geekstrange. All rights reserved.</p>
   <script>
     const title = document.querySelector("#title");
     title.innerHTML = title.textContent
@@ -527,6 +529,15 @@
     title.addEventListener("animationend", (e) => {
       if (e.target === document.querySelector("#title span:last-child")) {
         title.classList.add("ended");
+      }
+    });
+    //-------------------------------------Hiden Cards-------------------------------------------------------
+    document.getElementById('switch').addEventListener('click', function () {
+      var blogSection = document.querySelector('section.blog');
+      if (blogSection.style.display === 'none' || blogSection.style.display === '') {
+        blogSection.style.display = 'block';
+      } else {
+        blogSection.style.display = 'none';
       }
     });
   </script>
