@@ -115,9 +115,9 @@ header {
 .scroll-indicator {
     position: absolute;
     bottom: 40px;
-    /* 距离屏幕底部距离，可根据需要调整 */
+    /* 距离屏幕底部距离,可根据需要调整 */
     left: 50%;
-    color: #112434;
+    color: #D8E3E7;/* 云峰白 */
     transform: translateX(-50%);
     font-size: 2rem;
     animation: pulse 2s infinite ease-in-out, floatUpDown 2s infinite ease-in-out;
