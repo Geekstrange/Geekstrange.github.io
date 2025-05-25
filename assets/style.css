@@ -211,22 +211,6 @@ header {
 }
 
 /*--------------------------------------blog & card----------------------------------------------------------------------*/
-.h2two {
-	font-family: "Outfit";
-}
-
-.blog h3 {
-	font-family: "Outfit";
-}
-
-.blog p {
-	font-size: clamp(1rem, 6vw, 1.3rem);
-	color: #000;
-	font-weight: 400;
-	margin-bottom: 30px;
-	line-height: 1.5;
-}
-
 .cards {
   display: grid;
   gap: 60px;
@@ -238,25 +222,22 @@ header {
   position: relative;
   width: min(100%, 1200px);
   margin: 0 auto;
-  background: none;
-  box-shadow: none;
-  padding: 0;
 }
 
 .card-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-areas: "image text";
+  gap: 30px;
   align-items: center;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  padding: 30px;
   position: relative;
-  overflow: hidden;
 }
 
-/* 桌面端交替布局 */
+/* 修复交替布局 */
 .card:nth-child(even) .card-content {
   grid-template-areas: "text image";
 }
@@ -267,23 +248,16 @@ header {
   height: 400px;
   object-fit: contain;
   border-radius: 15px;
-  transition: transform 0.3s ease;
 }
 
 .card-text {
   grid-area: text;
-  padding: 30px;
+  padding: 0 30px;
   position: relative;
   z-index: 2;
 }
 
-/* 偶数卡片反转布局 */
-.card:nth-child(even) .card-image {
-  grid-area: image;
-  justify-self: end;
-}
-
-/* 文字对齐系统 */
+/* 文字对齐修正 */
 .card:nth-child(odd) .card-text {
   text-align: right;
   padding-left: 15%;
@@ -296,26 +270,9 @@ header {
   padding-left: 5%;
 }
 
-.card-text h3 {
-  font-size: 1.4rem;
-  margin: 0 0 1.5rem;
-  text-align: center;
-  color: #112434;
-}
-
-.card-text p.cardtext {
-  font-size: 1rem; /* 调小字号 */
-  line-height: 1.6;
-  color: #444;
-}
-
-/* 覆盖层样式 */
+/* 覆盖层定位修正 */
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  grid-area: 1 / 1 / 2 / 3; /* 覆盖整个网格区域 */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -325,18 +282,6 @@ header {
     rgba(164, 209, 198, 0.9));
   opacity: 0;
   transition: all 0.4s ease-in-out;
-  padding: 30px;
-}
-
-.overlay h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.overlay p.cardtext {
-  font-size: 0.9rem; /* 覆盖层更小字号 */
-  text-align: center;
-  max-width: 600px;
 }
 
 /* 响应式设计 */
@@ -345,41 +290,26 @@ header {
     grid-template-columns: 1fr;
     grid-template-areas: "image" "text";
     gap: 20px;
-    padding: 15px;
+    padding: 20px;
   }
 
   .card-text {
     text-align: left !important;
-    padding: 20px 10% !important;
+    padding: 0 10% !important;
   }
 
   .card-image {
     height: 300px;
-    justify-self: center;
-  }
-
-  .overlay {
-    padding: 20px;
   }
 }
 
 @media (max-width: 600px) {
   .card-image {
     height: 250px;
-    padding: 10px;
   }
 
   .card-text {
-    padding: 15px 5% !important;
-  }
-
-  .card-text p.cardtext {
-    font-size: 0.9rem;
-  }
-
-  .cards {
-    gap: 40px;
-    padding: 40px 3%;
+    padding: 0 5% !important;
   }
 }
 /*-----------------------------------------------h1 Welcome input--------------------------------------------------------*/
