@@ -73,6 +73,11 @@ header {
     position: relative;
 }
 
+.scroll-indicator {
+  text-decoration: none;
+  border: none;
+}
+
 #title {
     font-size: 8rem;
     font-family: monospace;
