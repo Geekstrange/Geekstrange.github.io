@@ -229,84 +229,78 @@ header {
     margin: 0 auto;
 }
 
-/* 优化后的CSS */
+/* 卡片容器 */
 .card-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    padding: 30px;
-    position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  align-items: center;
+  padding: 30px;
 }
 
-/* 图片尺寸优化 */
+/* 默认布局：图片左文字右 */
 .card-image {
-    width: 100%;
-    max-width: 350px;
-    /* 缩小图片容器 */
-    height: 300px;
-    /* 降低高度 */
-    object-fit: contain;
-    margin: auto;
-    /* 居中显示 */
-}
-
-/* 交替布局 */
-.card:nth-child(even) .card-content {
-    direction: rtl;
+  order: 1;
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
 .card-text {
-    direction: ltr;
-    padding: 0 5%;
-    text-align: justify;
+  order: 2;
+  padding: 0 30px;
 }
 
-/* 智能对齐系统 */
-.card:nth-child(odd) .card-text {
-    text-align: right;
-    padding-left: 15%;
+/* 偶数卡片反转布局 */
+.card:nth-child(even) .card-image {
+  order: 2;
 }
 
 .card:nth-child(even) .card-text {
-    text-align: left;
-    padding-right: 15%;
+  order: 1;
 }
 
-/* 覆盖层优化 */
+/* 文字对齐系统 */
+.card:nth-child(odd) .card-text {
+  text-align: right;
+  padding-left: 15%;
+  padding-right: 5%;
+}
+
+.card:nth-child(even) .card-text {
+  text-align: left;
+  padding-right: 15%;
+  padding-left: 5%;
+}
+
+/* 覆盖层定位 */
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(...);
-    opacity: 0;
-    transition: all 0.4s ease;
-    padding: 30px;
-    text-align: center;
+  grid-column: 1 / -1;
+  grid-row: 1;
 }
 
 /* 响应式设计 */
 @media (max-width: 900px) {
-    .card-content {
-        grid-template-columns: 1fr;
-        direction: ltr !important;
-    }
+  .card-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-    .card-image {
-        max-width: 250px;
-        height: 250px;
-        order: -1;
-    }
+  .card-image,
+  .card-text {
+    order: initial !important;
+    width: 100%;
+    max-width: none;
+    padding: 0 10% !important;
+    text-align: left !important;
+  }
 
-    .card-text {
-        text-align: left !important;
-        padding: 0 5% !important;
-    }
+  .card-image {
+    height: 250px;
+    margin-bottom: 20px;
+  }
 }
 
 /*-----------------------------------------------h1 Welcome input--------------------------------------------------------*/
