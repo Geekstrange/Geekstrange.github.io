@@ -229,142 +229,96 @@ header {
 }
 
 .cards {
-	display: grid;
-	align-items: center;
-	justify-items: center;
-	grid-template-columns: 1fr;
-	gap: 40px;
-	padding: 60px 60px;
+  display: grid;
+  gap: 40px;
+  padding: 60px 5%;
+  grid-template-columns: 1fr;
 }
 
 .card {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: min(100%, 450px);
-	background-color: #fff;
-	box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-	border-radius: 20px;
-	padding: 30px 40px;
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  background: none;
+  box-shadow: none;
+  padding: 0;
 }
 
-.card img {
-	display: block;
-	width: 100%;
-	max-width: 250px;
-	margin: 20px;
-	height: auto;
+.card-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.card h3 {
-	font-size: 1.4rem;
-	font-weight: 700;
-	margin: 20px 0 20px;
-	text-align: center;
-	color: #000;
+.card:nth-child(even) .card-content {
+  direction: rtl;
 }
 
-.card p {
-	font-size: 1rem;
-	text-align: justify;
-	line-height: 1.5;
-	color: #000;
+.card-image {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card-text {
+  direction: ltr;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background: linear-gradient(to bottom,
-			rgba(206, 245, 223, 0.9),
-			rgba(164, 209, 198, 0.9));
-	border-radius: 20px;
-	list-style: none;
-	z-index: 1;
-	opacity: 0;
-	padding: 20px 40px;
-	transition: all 0.4s ease-in-out;
+  grid-column: 1 / -1;
+  background: linear-gradient(to bottom,
+    rgba(206, 245, 223, 0.9),
+    rgba(164, 209, 198, 0.9));
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
 }
 
-.overlay:hover {
-	opacity: 1;
-	cursor: default;
-}
-
-@media (max-width: 1300px) {
-	header {
-		padding: 30px 50px;
-	}
-
-	.parallax {
-		height: 120dvh;
-	}
-
-	.blog {
-		padding: 100px 120px 20px;
-	}
-}
-
+/* 响应式设计 */
 @media (max-width: 900px) {
-	.navigation li {
-		margin-left: 10px;
-	}
-
-	.parallax {
-		height: 100dvh;
-	}
-
-	.blog {
-		padding: 90px 100px 20px;
-	}
-
-	.cards {
-		padding: 40px 40px;
-	}
-
-	.card h3 {
-		margin: 20px 0 20px;
-	}
+  .card-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .card:nth-child(even) .card-content {
+    direction: ltr;
+  }
+  
+  .card-image {
+    height: 300px;
+    order: -1;
+    padding: 15px;
+  }
+  
+  .card-text {
+    padding: 20px;
+  }
 }
 
 @media (max-width: 600px) {
-	.navigation li {
-		margin-left: 5px;
-	}
-
-	header {
-		padding: 30px 10px;
-	}
-
-	.blog {
-		padding: 90px 40px 20px;
-	}
-
-	.blog p {
-		font-size: 1rem;
-	}
-
-	.card {
-		width: min(100%, 450px);
-	}
-
-	.card h3 {
-		font-size: 1.2rem;
-	}
-
-	.card p {
-		font-size: 0.85rem;
-		text-align: unset;
-	}
+  .card-image {
+    height: 250px;
+    padding: 10px;
+  }
+  
+  .card-text {
+    padding: 15px;
+  }
+  
+  .cards {
+    padding: 40px 3%;
+  }
 }
-
 /*-----------------------------------------------h1 Welcome input--------------------------------------------------------*/
 :root {
 	font-size: 20px;
