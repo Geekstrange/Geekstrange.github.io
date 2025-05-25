@@ -211,6 +211,10 @@ header {
 }
 
 /*--------------------------------------blog & card----------------------------------------------------------------------*/
+.h2two {
+  text-align: center;
+  font-family:"Outfit";
+}
 .cards {
   display: grid;
   gap: 60px;
@@ -255,6 +259,7 @@ header {
   padding: 0 30px;
   position: relative;
   z-index: 2;
+  font-family:"Outfit"
 }
 
 /* 文字对齐修正 */
