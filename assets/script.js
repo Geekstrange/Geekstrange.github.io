@@ -1,3 +1,13 @@
+// 自动生成覆盖层内容
+document.querySelectorAll('.card').forEach(card => {
+  const overlay = card.querySelector('.overlay');
+  const title = card.querySelector('h3').cloneNode(true);
+  const text = card.querySelector('.cardtext').cloneNode(true);
+  
+  overlay.appendChild(title);
+  overlay.appendChild(text);
+});
+
 const title = document.querySelector("#title");
 title.innerHTML = title.textContent
 	.replace(/\S/g, "<span>$&</span>")
