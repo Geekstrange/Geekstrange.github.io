@@ -227,12 +227,20 @@ header {
 	line-height: 1.5;
 }
 
-/* 卡片布局修正 */
 .cards {
   display: grid;
   gap: 60px;
   padding: 60px 5%;
   grid-template-columns: 1fr;
+}
+
+.card {
+  position: relative;
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  background: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 .card-content {
@@ -243,38 +251,65 @@ header {
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+  padding: 20px;
   position: relative;
   overflow: hidden;
 }
 
-/* 偶数卡片反转布局 */
+/* 桌面端交替布局 */
 .card:nth-child(even) .card-content {
-  grid-template-columns: 1fr 1fr; /* 明确声明保持2列 */
-}
-
-.card:nth-child(even) .card-image {
-  order: 2; /* 图片移到右侧 */
-}
-
-.card:nth-child(even) .card-text {
-  order: 1; /* 文字移到左侧 */
+  grid-template-areas: "text image";
 }
 
 .card-image {
+  grid-area: image;
   width: 100%;
   height: 400px;
   object-fit: contain;
-  padding: 30px;
+  border-radius: 15px;
   transition: transform 0.3s ease;
 }
 
 .card-text {
-  padding: 40px;
+  grid-area: text;
+  padding: 30px;
   position: relative;
   z-index: 2;
 }
 
-/* 覆盖层适配新布局 */
+/* 偶数卡片反转布局 */
+.card:nth-child(even) .card-image {
+  grid-area: image;
+  justify-self: end;
+}
+
+/* 文字对齐系统 */
+.card:nth-child(odd) .card-text {
+  text-align: right;
+  padding-left: 15%;
+  padding-right: 5%;
+}
+
+.card:nth-child(even) .card-text {
+  text-align: left;
+  padding-right: 15%;
+  padding-left: 5%;
+}
+
+.card-text h3 {
+  font-size: 1.4rem;
+  margin: 0 0 1.5rem;
+  text-align: center;
+  color: #112434;
+}
+
+.card-text p.cardtext {
+  font-size: 1rem; /* 调小字号 */
+  line-height: 1.6;
+  color: #444;
+}
+
+/* 覆盖层样式 */
 .overlay {
   position: absolute;
   top: 0;
@@ -290,34 +325,56 @@ header {
     rgba(164, 209, 198, 0.9));
   opacity: 0;
   transition: all 0.4s ease-in-out;
+  padding: 30px;
+}
+
+.overlay h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.overlay p.cardtext {
+  font-size: 0.9rem; /* 覆盖层更小字号 */
+  text-align: center;
+  max-width: 600px;
 }
 
 /* 响应式设计 */
 @media (max-width: 900px) {
   .card-content {
     grid-template-columns: 1fr;
+    grid-template-areas: "image" "text";
     gap: 20px;
-  }
-
-  .card-image {
-    order: -1 !important; /* 移动端强制图片在上方 */
-    height: 300px;
-    padding: 20px;
+    padding: 15px;
   }
 
   .card-text {
-    padding: 20px 30px 40px;
+    text-align: left !important;
+    padding: 20px 10% !important;
+  }
+
+  .card-image {
+    height: 300px;
+    justify-self: center;
+  }
+
+  .overlay {
+    padding: 20px;
   }
 }
 
 @media (max-width: 600px) {
   .card-image {
     height: 250px;
-    padding: 15px;
+    padding: 10px;
   }
 
   .card-text {
-    padding: 15px 20px 30px;
+    padding: 15px 5% !important;
+  }
+
+  .card-text p.cardtext {
+    font-size: 0.9rem;
   }
 
   .cards {
