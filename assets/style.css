@@ -72,7 +72,7 @@ header {
 #title::after {
     content: "";
     position: absolute;
-    width: 20px;
+    width: 18px;
     height: 8rem;
     background: #0d0d0d;
     right: -30px;
