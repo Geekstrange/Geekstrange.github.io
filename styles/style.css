@@ -1,5 +1,4 @@
 /*------------------------------------------Typeface------------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Pacifico:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sumana=swap');
 
@@ -214,14 +213,6 @@ header {
 /*--------------------------------------blog & card----------------------------------------------------------------------*/
 .h2two {
 	font-family: "Outfit";
-}
-
-.blog h2 {
-	font-family: "Pacifico";
-	font-size: clamp(2rem, 6vw, 3rem);
-	color: #000;
-	margin: 60px 0 40px;
-	text-align: center;
 }
 
 .blog h3 {
