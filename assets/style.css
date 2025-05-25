@@ -229,80 +229,70 @@ header {
     margin: 0 auto;
 }
 
-/* 卡片容器 */
+/* 修复后的CSS */
 .card-content {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
   padding: 30px;
+  position: relative;
 }
 
-/* 默认布局：图片左文字右 */
 .card-image {
-  order: 1;
   width: 100%;
-  max-width: 400px;
-  height: 300px;
+  max-width: 380px; /* 适当缩小图片 */
+  height: 280px;
   object-fit: contain;
-  margin: 0 auto;
+  margin: auto;
 }
 
-.card-text {
-  order: 2;
-  padding: 0 30px;
-}
+/* 交替布局系统 */
+.card:nth-child(odd) .card-image { order: 1; }
+.card:nth-child(odd) .card-text { order: 2; }
 
-/* 偶数卡片反转布局 */
-.card:nth-child(even) .card-image {
-  order: 2;
-}
+.card:nth-child(even) .card-image { order: 2; }
+.card:nth-child(even) .card-text { order: 1; }
 
-.card:nth-child(even) .card-text {
-  order: 1;
-}
-
-/* 文字对齐系统 */
-.card:nth-child(odd) .card-text {
-  text-align: right;
-  padding-left: 15%;
-  padding-right: 5%;
-}
-
-.card:nth-child(even) .card-text {
-  text-align: left;
-  padding-right: 15%;
-  padding-left: 5%;
-}
-
-/* 覆盖层定位 */
+/* 覆盖层定位修正 */
 .overlay {
-  grid-column: 1 / -1;
-  grid-row: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, 
+    rgba(206, 245, 223, 0.9),
+    rgba(164, 209, 198, 0.9));
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.overlay-content {
+  width: 80%;
+  text-align: center;
+  padding: 30px;
 }
 
 /* 响应式设计 */
 @media (max-width: 900px) {
   .card-content {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
-
+  
   .card-image,
   .card-text {
     order: initial !important;
-    width: 100%;
-    max-width: none;
-    padding: 0 10% !important;
-    text-align: left !important;
+    max-width: 100%;
   }
-
+  
   .card-image {
-    height: 250px;
+    height: 240px;
     margin-bottom: 20px;
   }
 }
-
 /*-----------------------------------------------h1 Welcome input--------------------------------------------------------*/
 :root {
     font-size: 20px;
