@@ -1,3 +1,23 @@
+// 修复后的克隆逻辑
+document.querySelectorAll('.card').forEach(card => {
+    const overlay = card.querySelector('.overlay');
+    const originalContent = card.querySelector('.card-text').cloneNode(true);
+
+    // 清除可能存在的重复内容
+    overlay.innerHTML = '';
+
+    // 仅克隆必要元素
+    const title = originalContent.querySelector('h3').cloneNode(true);
+    const text = originalContent.querySelector('p').cloneNode(true);
+
+    // 创建新的覆盖层容器
+    const overlayContent = document.createElement('div');
+    overlayContent.className = 'overlay-content';
+    overlayContent.append(title, text);
+
+    overlay.appendChild(overlayContent);
+});
+
 // 自动生成覆盖层内容
 document.querySelectorAll('.card').forEach(card => {
     const overlay = card.querySelector('.overlay');
