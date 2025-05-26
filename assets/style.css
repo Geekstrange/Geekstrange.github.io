@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sumana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
 
 * {
     margin: 0;
@@ -26,8 +27,9 @@ html::-webkit-scrollbar {
 }
 
 body {
-    background: url("C:/Users/geeks/Desktop/Geekstrange.github.io-main/images/background.jpg") no-repeat center center fixed;
-    /* background: #fffff0 no-repeat center center fixed; */
+    background: url("https://Geekstrange.github.io/images/background.jpg") no-repeat center center fixed;
+    /*background: #f0ece4 url('https://www.transparenttextures.com/patterns/paper-fibers.png');*/
+    /*background-repeat: repeat;*/
     background-size: cover;
     min-height: 100vh;
     font-family: "Outfit", sans-serif;
@@ -123,9 +125,13 @@ header {
 
 #title {
     font-size: 8rem;
-    font-family: monospace;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     position: relative;
     color: #0d0d0d;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 #title::after {
