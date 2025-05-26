@@ -27,9 +27,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-    background: url("https://Geekstrange.github.io/images/background.jpg") no-repeat center center fixed;
-    /*background: #f0ece4 url('https://www.transparenttextures.com/patterns/paper-fibers.png');*/
-    /*background-repeat: repeat;*/
+    background: url("https://geekstrange.github.io/images/background.jpg") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     font-family: "Outfit", sans-serif;
