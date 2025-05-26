@@ -1,3 +1,7 @@
+setTimeout(() => {
+    document.querySelector(".scroll-indicator").classList.add("show");
+}, 1500); // 延时 1.5 秒后显示
+
 // 动画分字
 const title = document.querySelector("#title");
 title.innerHTML = title.textContent.replace(/\S/g, "<span>$&</span>").replace(/\s/g, "<span> </span>");
