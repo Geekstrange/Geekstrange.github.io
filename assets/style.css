@@ -10,11 +10,14 @@
 html {
     scroll-behavior: smooth;
     /* 通用隐藏滚动条 */
-    overflow: auto; 				/* 保留滚动功能 */
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE 10+ */
+    overflow: auto;
+    /* 保留滚动功能 */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
 }
-	
+
 /* Chrome / Safari / Edge */
 html::-webkit-scrollbar {
     width: 0;
@@ -23,7 +26,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-    background: url(https://Geekstrange.github.io/images/background.jpg) no-repeat center center fixed;
+    background: url("C:/Users/geeks/Desktop/Geekstrange.github.io-main/images/background.jpg") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     font-family: "Outfit", sans-serif;
@@ -41,6 +44,26 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+
+    opacity: 0;
+    /* 1️初始透明 */
+    transform: translateY(-50px);
+    /* 2️初始向上偏移 */
+    animation: slideDown 0.8s ease-out forwards;
+    animation-delay: 1s;
+    /* 可根据打字动画时间调整 */
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .navigation {
@@ -74,8 +97,8 @@ header {
 }
 
 .scroll-indicator {
-  text-decoration: none;
-  border: none;
+    text-decoration: none;
+    border: none;
 }
 
 #title {
@@ -129,17 +152,25 @@ header {
 }
 
 .scroll-indicator {
+    opacity: 0;
+    transition: opacity 0.6s ease;
     position: absolute;
     bottom: 40px;
-    /* 距离屏幕底部距离,可根据需要调整 */
     left: 50%;
-    color: #D8E3E7;/* 云峰白 */
     transform: translateX(-50%);
     font-size: 2rem;
-    animation: pulse 2s infinite ease-in-out, floatUpDown 2s infinite ease-in-out;
-    opacity: 0.7;
+    color: #D8E3E7;
     z-index: 10;
+    pointer-events: none;
 }
+
+.scroll-indicator.show {
+    opacity: 0.7;
+    pointer-events: auto;
+    animation: pulse 2s infinite ease-in-out,
+        floatUpDown 2s infinite ease-in-out;
+}
+
 
 @keyframes pulse {
 
