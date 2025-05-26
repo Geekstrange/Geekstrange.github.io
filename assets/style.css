@@ -26,7 +26,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-    background: url("C:/Users/geeks/Desktop/Geekstrange.github.io-main/images/background.jpg") no-repeat center center fixed;
+    background: url(https://Geekstrange.github.io/background.jpg) no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     font-family: "Outfit", sans-serif;
