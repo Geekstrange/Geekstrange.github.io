@@ -26,7 +26,8 @@ html::-webkit-scrollbar {
 }
 
 body {
-    background: url(https://Geekstrange.github.io/background.jpg) no-repeat center center fixed;
+    background: url("C:/Users/geeks/Desktop/Geekstrange.github.io-main/images/background.jpg") no-repeat center center fixed;
+    /* background: #fffff0 no-repeat center center fixed; */
     background-size: cover;
     min-height: 100vh;
     font-family: "Outfit", sans-serif;
@@ -52,6 +53,25 @@ header {
     animation: slideDown 0.8s ease-out forwards;
     animation-delay: 1s;
     /* 可根据打字动画时间调整 */
+}
+
+.logo-bg {
+    fill: #000;
+    clip-path: url(#clipFolded);
+    transition: clip-path 0.4s ease-in-out;
+}
+
+.fold-corner {
+    fill: #fff;
+    transition: opacity 0.4s ease;
+}
+
+.logo:hover .logo-bg {
+    clip-path: url(#clipFull);
+}
+
+.logo:hover .fold-corner {
+    opacity: 0;
 }
 
 @keyframes slideDown {
@@ -171,7 +191,6 @@ header {
         floatUpDown 2s infinite ease-in-out;
 }
 
-
 @keyframes pulse {
 
     0%,
@@ -249,7 +268,6 @@ header {
         0 0 120px #fff,
         0 0 160px #fff;
 }
-
 
 .cards {
     display: grid;
@@ -348,8 +366,6 @@ header {
         0 0 20px #fff,
         0 0 40px #fff;
 }
-
-
 
 .overlay-content {
     width: 80%;
